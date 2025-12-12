@@ -1,4 +1,6 @@
 package Taller_4;
+//Mario Lagues - 21974580K - ICCI
+//Cristobal Espinoza - 217356121 - ICCI
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,6 +11,7 @@ public class Main {
     private static Sistema sistema = Sistema.getInstancia();
     
     public static void main(String[] args) throws FileNotFoundException {
+        // Cargar datos
         leerUsuario();
         leerEstudiantes();
         leerCursos();
@@ -17,8 +20,10 @@ public class Main {
         leerNotas();
         leerAsignaturasCertificaciones();
         
-        // Aquí iniciarías la interfaz gráfica
-        System.out.println("Datos cargados exitosamente");
+        // Iniciar interfaz gráfica
+        javax.swing.SwingUtilities.invokeLater(() -> {
+            new LoginFrame().setVisible(true);
+        });
     }
 
     private static void leerAsignaturasCertificaciones() throws FileNotFoundException {
@@ -129,5 +134,9 @@ public class Main {
             }
         }
         sc.close();
+    }
+    
+    public static Sistema getSistema() {
+        return sistema;
     }
 }
